@@ -14,4 +14,12 @@ CONSTRAINT task_pkey PRIMARY KEY (task_id),
 CONSTRAINT fk_user FOREIGN KEY (user_id)
       REFERENCES USERS (user_id));
       
-create sequence tasks_seq increment by 1 start with 1;      
+create sequence tasks_seq increment by 1 start with 1;   
+
+select * from users
+
+select * from tasks
+
+delete from tasks;
+delete from users;
+commit;

@@ -9,6 +9,5 @@ import org.mapstruct.factory.Mappers;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface TaskMapper {
     TaskMapper INSTANCE = Mappers.getMapper(TaskMapper.class);
-    TaskDTO taskToTaskDTO(Task entity);
-    Task taskDTOToTask(TaskDTO dto);
+    Task taskDTOToTask(TaskDTO taskDTO);
 }

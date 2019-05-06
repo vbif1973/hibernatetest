@@ -1,18 +1,11 @@
 package com.epam.hibernatetest.dto;
 
+import com.epam.hibernatetest.entity.User;
+
 public class TaskDTO {
 
     String taskName;
-
-//    Long taskId;
-//
-//    public Long getTaskId() {
-//        return taskId;
-//    }
-//
-//    public void setTaskId(Long taskId) {
-//        this.taskId = taskId;
-//    }
+    User user;
 
     public String getTaskName() {
         return taskName;
@@ -20,5 +13,13 @@ public class TaskDTO {
 
     public void setTaskName(String taskName) {
         this.taskName = taskName;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

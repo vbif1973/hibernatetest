@@ -4,6 +4,7 @@ import com.epam.hibernatetest.dto.TaskDTO;
 import com.epam.hibernatetest.dto.UserDTO;
 import com.epam.hibernatetest.entity.Task;
 import com.epam.hibernatetest.entity.User;
+import com.epam.hibernatetest.mapper.TaskMapper;
 import com.epam.hibernatetest.mapper.UserMapper;
 import com.epam.hibernatetest.util.HibernateUtil;
 import org.hibernate.Session;
@@ -77,6 +78,37 @@ public class App {
             user.getTasks().add(task1);
     }
 
+    private static void createUserAndChildrenFromDTO(Session session ) {
+
+        //Создаем пользователя из DTO
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUserName("Petya");
+
+        User user = UserMapper.INSTANCE.userDTOToUser(userDTO);
+
+        //Создаем сет TaskDTO
+        Set<TaskDTO> tasksDTOs = new HashSet<>();
+
+        TaskDTO task1 = new TaskDTO();
+        task1.setTaskName("task1");
+        task1.setUser(user);
+
+        TaskDTO task2 = new TaskDTO();
+        task2.setTaskName("task2");
+        task2.setUser(user);
+
+        tasksDTOs.add(task1);
+        tasksDTOs.add(task2);
+
+        Set<Task> tasks = new HashSet<>();
+        tasksDTOs.forEach(x -> tasks.add(TaskMapper.INSTANCE.taskDTOToTask(x)));
+
+        user.setTasks(tasks);
+
+        session.save(user);
+
+    }
+
     public static void main(String[] args) {
         Transaction transaction = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -96,32 +128,5 @@ public class App {
             }
             e.printStackTrace();
         }
-    }
-
-    private static void createUserAndChildrenFromDTO(Session session ) {
-        UserDTO userDTO = new UserDTO();
-
-        userDTO.setUserName("Petya");
-
-        Set<TaskDTO> tasks = new HashSet<>();
-
-        TaskDTO task1 = new TaskDTO();
-        task1.setTaskName("task1");
-//        task1.setUser(user);
-
-        TaskDTO task2 = new TaskDTO();
-        task2.setTaskName("task2");
-//        task1.setUser(user);
-
-        tasks.add(task1);
-        tasks.add(task2);
-
-        userDTO.setTasks(tasks);
-
-        User user = UserMapper.INSTANCE.userDTOToUser(userDTO);
-
-        session.save(user);
-
-
     }
 }

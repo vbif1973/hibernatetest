@@ -8,8 +8,6 @@ public class UserDTO {
 
     String userName;
 
-    Set<TaskDTO> tasks;
-
     public String getUserName() {
         return userName;
     }
@@ -18,11 +16,4 @@ public class UserDTO {
         this.userName = userName;
     }
 
-    public Set<TaskDTO> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(Set<TaskDTO> tasks) {
-        this.tasks = tasks;
-    }
 }

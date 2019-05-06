@@ -1,0 +1,10 @@
+com\epam\hibernatetest\util\HibernateUtil.class
+com\epam\hibernatetest\dto\UserDTO.class
+com\epam\hibernatetest\mapper\TaskMapperImpl.class
+com\epam\hibernatetest\mapper\UserMapper.class
+com\epam\hibernatetest\mapper\UserMapperImpl.class
+com\epam\hibernatetest\entity\Task.class
+com\epam\hibernatetest\app\App.class
+com\epam\hibernatetest\entity\User.class
+com\epam\hibernatetest\mapper\TaskMapper.class
+com\epam\hibernatetest\dto\TaskDTO.class
